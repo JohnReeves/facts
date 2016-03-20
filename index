@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+  <meta charset="utf-8">
+  <title>Fact Of The Week</title>
+
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+</head>
+<body>
+
+
+  <div class="container">
+    <h1 style="color:#00BCD4"> <p class="text-center">Fact of the week...</h1>
+
+
+    <h2 class="text-center" id="fact">You breathe on average about 5 million times a year.</h2>
+      <p class="text-center">  <i class="fa fa-comments fa-5x" id="icon" ></i></p>
+
+
+
+  </div>
+
+</body>
+
+  <script>
+  //http://stackoverflow.com/questions/6117814/get-week-of-year-in-javascript-like-in-php
+  function getWeekNumber() {
+      // Copy date so don't modify original
+      var d = new Date();
+      d.setHours(0,0,0);
+      // Set to nearest Thursday: current date + 4 - current day number
+      // Make Sunday's day number 7
+      d.setDate(d.getDate() + 4 - (d.getDay()||7));
+      // Get first day of year
+      var yearStart = new Date(d.getFullYear(),0,1);
+      // Calculate full weeks to nearest Thursday
+      var weekNo = Math.ceil(( ( (d - yearStart) / 86400000) + 1)/7);
+      // Return array of year and week number
+      return [ weekNo];
+  }
+
+
+  var facts = [{
+      "fact":"You breathe on average about 5 million times a year.",
+          "icon":"fa-comments-o"
+  },
+  {
+      "fact":"Months that begin on a Sunday always have a Friday the 13th in them.",
+          "icon":"fa-calendar-check-o"
+  },
+  {
+      "fact":"You are born with 300 bones, by the time you are an adult you will have 206.",
+          "icon":"fa-male"
+  },
+  {
+      "fact":"The average lead pencil will write a line about 35 miles long or write approximately 50,000 English words.",
+          "icon":"fa-pencil"
+  },
+  {
+      "fact":"One fourth of the bones in your body are in your feet.",
+          "icon":"fa-female"
+  },
+  {
+      "fact":"The average person spends 2 weeks of their lifetime waiting for the light to change from red to green.",
+          "icon":"fa-car"
+  },
+  {
+      "fact":"It takes more calories to eat a piece of celery than the celery has in it.",
+          "icon":"fa-cutlery"
+  },
+  {
+      "fact":"The present population is expected to rise to 15 Billion by the year 2080.",
+          "icon":"fa-users"
+  },
+  {
+      "fact":"The largest recorded snowflake was 15 inches wide and 8 inches thick.",
+          "icon":"fa-cloud"
+  },
+  {
+      "fact":"The tip of a bullwhip moves so fast that the sound it makes is actually a tiny sonic boom.",
+          "icon":"fa-volume-off"
+  },
+  {
+      "fact":"Native Americans used to name their children after the first thing they saw as they left their tepees after their children were born, hence the names Sitting Bull and Running Water.",
+          "icon":"fa-child"
+  },
+  {
+      "fact":"The Matami Tribe of West Africa play their own version of football, instead of a normal football they use a human skull.",
+          "icon":"fa-history"
+  },
+  {
+      "fact":"Coca-Cola would be green if the food colorant wasn't added",
+          "icon":"fa-glass"
+  },
+  {
+      "fact":"Almost is the longest word in the English language with all the letters in alphabetical order.",
+          "icon":"fa-pencil-square-o"
+  },
+  {
+      "fact":"Human thigh bones are stronger than concrete.",
+          "icon":"fa-road"
+  },
+  {
+      "fact":"Cockroaches can live several weeks with their heads cut off.",
+          "icon":"fa-bug"
+  },
+  {
+      "fact":"It is impossible to sneeze with your eyes open.",
+          "icon":"fa-eye"
+  },
+  {
+     "fact":"Of all the words in the English language, the word SET has the most definitions.",
+          "icon":"fa-book"
+  },
+  {
+      "fact":"It is against the law to burp, or sneeze inside a church in Nebraska. ",
+          "icon":"fa-times-circle-o"
+  },
+  {
+      "fact":"In 1386 a pig in France was executed by public hanging for the murder of a child. ",
+          "icon":"fa-child"
+  },
+  {
+      "fact":"Earth is the only planet not named after a god.",
+          "icon":"fa-globe"
+  },
+  {
+      "fact":"The world's oldest piece of chewing gum is over 9,000 years old!",
+          "icon":"fa-clock-o"
+  },
+  {
+      "fact":"Scientists have tracked butterflies travelling over 3,000 miles. ",
+          "icon":"fa-line-chart"
+  },
+  {
+      "fact":"The silkworm consumes 86,000 times its own weight in 56 days. ",
+          "icon":"fa-arrows-h"
+  },
+  {
+      "fact":"If removed from the stress of the modern world, the average human would sleep about 10 hours a day.",
+          "icon":"fa-clock-o"
+  },
+  {
+      "fact":"To produce a single pound of honey, a single bee would have to visit 2 million flowers.",
+          "icon":"fa-genderless"
+  },
+  {
+      "fact":"A colony of 500 bats can eat approximately 250,000 insects in an hour. ",
+          "icon":"fa-bug"
+  },
+  {
+      "fact":"One in Five adults believes that aliens are hiding in our planet disguised as humans. ",
+          "icon":"fa-github-alt"
+  },
+  {
+      "fact":"Travelling masseuses in ancient Japan were required by law to be blind.",
+          "icon":"fa-eye-slash"
+  },
+  {
+      "fact":"James Fixx, the man who popularized jogging in America died of a heart attack while running.",
+          "icon":"fa-heartbeat"
+  },
+  {
+      "fact":"The average person in the UK watches just over four hours’ television a day",
+          "icon":"fa-television"
+  },
+  {
+      "fact":"There are no naturally occurring blue foods, even blueberries are purple! ",
+          "icon":"fa-cutlery"
+  },
+  {
+      "fact":"The skeleton of Jeremy Bentham is present in all the important meetings of the University of London. ",
+          "icon":"fa-line-chart"
+  },
+  {
+      "fact":"The elephant is the only mammal that can't jump! ",
+          "icon":"fa-arrow-up"
+  },
+  {
+      "fact":"Just like fingerprints, everyone's tongue is different. ",
+          "icon":"fa-smile-o"
+  },
+  {
+      "fact":"The longest recorded flight of a chicken is 13 seconds.",
+          "icon":"fa-arrows-h"
+  },
+   {
+      "fact":"111,111,111 x 111,111,111 = 12,345,678,987,654,321",
+          "icon":"fa-calculator"
+  },
+  {
+      "fact":"11% of the World is left handed. ",
+          "icon":"fa-hand-paper-o"
+  },
+   {
+      "fact":"A Jiffy is the scientific name for 1/100th  of a second.",
+          "icon":"fa-clock-o"
+  },
+  {
+      "fact":"Only 38% of Americans eat breakfast every day. ",
+          "icon":"fa-sun-o"
+  },
+  {
+      "fact":"It would have taken 2.5 million seagulls to lift James's giant peach into the air, not the 501 that Roald Dahl suggested. ",
+          "icon":"fa-book"
+  },
+  {
+      "fact":"Hot drinks taste different according to the cup colour. ",
+          "icon":"fa-coffee"
+  },
+  {
+      "fact":"It's easier to pick wet things up with wrinkled fingers - suggesting an evolutionary reason for getting prune fingers in the bath. ",
+          "icon":"fa-hand-lizard-o"
+  },
+  {
+      "fact":"There are two firms in the world cloning polo ponies",
+          "icon":"fa-clone"
+  },
+  {
+      "fact":"Two per cent of Europeans lack the genes for smelly armpits ",
+          "icon":"fa-user"
+  },
+  {
+      "fact":" Horse-eating is called Hippophagy. ",
+          "icon":"fa-cutlery"
+  },
+  {
+      "fact":"Russian flu got its name because of the Cold War rather than because it originated in Russia. ",
+          "icon":"fa-user-md"
+  },
+  {
+      "fact":"William is the surname that has decreased the most since 1901.",
+          "icon":"fa-users"
+  },
+  {
+      "fact":"Your thumb is the same length as your nose. ",
+          "icon":"fa-thumbs-up"
+  },
+  {
+      "fact":"For at least 2 seconds of your life you and the youngest person in the world.",
+          "icon":"fa-child"
+  },
+  {
+      "fact":"It would take at least 480 bananas to die of potassium over does.",
+          "icon":"fa-times-circle-o"
+  },
+  {
+      "fact":"People say bless you when you sneeze because your heart stops for a millisecond. ",
+          "icon":"fa-heart"
+  }    ];
+
+
+  var iconLabel = $("#icon");
+
+  var factLabel = $("#fact");
+
+  //todo work out fact of the week
+
+  var weekNumber = getWeekNumber();
+
+
+  var weekFact = facts[weekNumber];
+
+
+  iconLabel.attr("class", "fa "+weekFact.icon + " fa-5x fa-spin");
+
+  factLabel.text(weekFact.fact);
+
+  </script>
+</html>
